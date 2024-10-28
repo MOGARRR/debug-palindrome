@@ -1,12 +1,16 @@
 // FUNCTION IMPLEMENTATION (MULTIPLE BUGS)
 const isPalindrome = function(str) {
-  const noSpaces = str.split(" ").join("");
+  if(str.length < 2){
+    return true;
+  }
+  const noSpaces = str.toLowerCase().split(" ").join("").split('');
   const midIndex = Math.floor(noSpaces.length/2);
   const lastIndex = noSpaces.length - 1;
 
   for (let i = 0; i < midIndex; i++) {
-    if (str[i] !== str[lastIndex - i]) return false;
+    if (noSpaces[i] !== noSpaces[lastIndex - i]) return false;
   }
+  return true;
 }
 
 // Assertion Function
@@ -28,8 +32,8 @@ assertPalindrome('racecar', true);
 assertPalindrome('my gym', true);
 assertPalindrome('foo', false);
 assertPalindrome('fluff', false);
-assertPalindrome('just some random words', false);
+assertPalindrome('just some random words', false); 
 
 // Bonus / Stretch: Uncomment these tests and figure out why these are also failing
-// assertPalindrome('Kayak', true);
-// assertPalindrome('a santa at NASA', true);
+assertPalindrome('Kayak', true);
+assertPalindrome('a santa at NASA', true);
